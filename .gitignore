@@ -1,0 +1,6 @@
+package-lock.json
+users.csv
+*\node_modules
+*.log
+.env
+public

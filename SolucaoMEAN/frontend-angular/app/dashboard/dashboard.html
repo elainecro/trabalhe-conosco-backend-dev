@@ -1,0 +1,19 @@
+<content-header name="Dashboard" small="Versão 1.0"></content-header>
+
+<section class="content" ng-controller="DashboardCtrl as dashboard">
+    <div ng-if="dashboard.loading">
+        <value-box grid="4" color-class="bg-green" icon-class="fa-users" value="Aguarde..." text="Total de Usuários"><i class="fas fa-spinner"></i></value-box>
+
+        <value-box grid="4" color-class="bg-red" icon-class="fa-angle-double-up" value="Aguarde..." text="Primeiro Nível de Relevância"></value-box>
+
+        <value-box grid="4" color-class="bg-blue" icon-class="fa-angle-up" value="Aguarde..." text="Segundo Nível de Relevância"></value-box>
+    </div>
+
+    <div ng-if="!dashboard.loading">
+        <value-box grid="4" color-class="bg-green" icon-class="fa-users" value=" {{ dashboard.total }}" text="Total de Usuários"><i class="fas fa-spinner"></i></value-box>
+
+        <value-box grid="4" color-class="bg-red" icon-class="fa-angle-double-up" value=" {{ dashboard.relevancia1 }}" text="Primeiro Nível de Relevância"></value-box>
+
+        <value-box grid="4" color-class="bg-blue" icon-class="fa-angle-up" value=" {{ dashboard.relevancia2 }}" text="Segundo Nível de Relevância"></value-box>
+    </div>
+</section>

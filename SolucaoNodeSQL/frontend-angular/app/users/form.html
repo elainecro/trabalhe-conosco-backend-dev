@@ -1,0 +1,21 @@
+<content-header name="Usuários" small="Pesquisa"></content-header>
+
+<section class="content" ng-controller="UserCtrl as ctrl">
+    <div role="form">
+        <div class="box box-info">
+            <div class="box-header with-border"></div>
+            <form class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group" style="margin-left: 0px;">
+                        <field id="name" label="Nome" grid="11" type="text" placeholder="Informe o nome (mínimo 6 caracteres)" model="ctrl.user.name"></field>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-info" ng-click="ctrl.find()">Pesquisar</button>
+                </div>
+            </form>
+        </div> 
+    </div>
+
+    <div class="box box-info" ng-if="ctrl.users" ng-include="'/users/list.html'"></div>
+</section>

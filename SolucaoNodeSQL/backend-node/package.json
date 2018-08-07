@@ -1,0 +1,32 @@
+{
+  "name": "backend-node",
+  "version": "1.0.0",
+  "description": "Backend criado para teste PicPay",
+  "main": "loader.js",
+  "scripts": {
+    "dev": "nodemon",
+    "production": "pm2 start loader.js --name backend"
+  },
+  "keywords": [
+    "Teste PicPay",
+    "backend",
+    "deva :)",
+    "MEAN"
+  ],
+  "author": "Elaine Cristina Rocha de Oliveira",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-query-int": "^3.0.0",
+    "jsonwebtoken": "^7.3.0",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.2.5",
+    "mongoose-paginate": "^5.0.3",
+    "mssql": "^4.1.0",
+    "node-restful": "^0.2.6",
+    "pm2": "^3.0.3"
+  }
+}

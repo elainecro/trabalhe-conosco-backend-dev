@@ -14,6 +14,7 @@
                     vm.pagesArray = Array(cntpages).fill(0).map((e,i) => i + 1)
 
                     vm.current = parseInt($location.search().page) || 1
+                    console.log(vm.pages)
                     vm.needPagination = parseInt(vm.pages) > 1 
                     vm.hasPrev = parseInt(vm.current) > 1
                     vm.hasNext = parseInt(vm.current) < parseInt(vm.pages)  

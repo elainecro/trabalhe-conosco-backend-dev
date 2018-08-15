@@ -10,7 +10,7 @@ User.route('get', function (req, res) {
 
 
     var sqlQry = "SELECT *, CASE WHEN (SELECT COUNT(*) FROM relevancia1 r1 WHERE r1.guid = u.guid) > 0 THEN 1 WHEN (SELECT COUNT(*) FROM relevancia2 r2 WHERE r2.guid = u.guid) > 0 THEN 2 ELSE 3 END AS relevancia FROM [PicPay].[dbo].[users] u WHERE NAME like '%"+termo+"%' ORDER BY relevancia OFFSET "+skip+ " ROWS FETCH NEXT " +limit+" ROWS ONLY " //FOR JSON PATH
-    global.conn.request().query(sqlQry).then(result => res.send(result.recordset)).catch(err => res.json(err))
+    global.conn.request().query(sqlQry).then(result => res.send({ count:result.recordsets[0].length, data: result.recordset})).catch(err => res.json(err))
 })
 
 User.route('count', function (req, res) {

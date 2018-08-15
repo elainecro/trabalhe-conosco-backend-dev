@@ -21,10 +21,10 @@ const signin = (req, res) => {
         if (err) {
             return sendErrorsFromDB(res, err)
         } else if (user && bcrypt.compareSync(password, user.recordset[0].password)) {
-            const token = jwt.sign(user, env.authSecret, {
+            const token = jwt.sign(user.recordset[0], env.authSecret, {
                 expiresIn: "1 day"
             })
-            const { name, email } = user
+            const { name, email } = user.recordset[0]
             res.json({ name, email, token })
         } else {
             return res.status(400).send({ errors: ['Usuário/Senha inválidos'] })

@@ -34,26 +34,39 @@ User.route('get', function(req, res) {
     var termo = req.params.name
 
     User.find({
-        name: /^.*Jarbas To.*$/i
+        name: /^.*Rogerio puz.*$/i
     }, function (err, listUsers) {
         if (err) res.send(err)
 
         listUsers.map(function(listUsers) {
             console.log(listUsers.guid)
-            var relevanciaMax = Relevancia1.find({guid: listUsers.guid}).count();     
-            var relevanciaMin = Relevancia2.find({guid: listUsers.guid}).count();
+
+            Relevancia1.countDocuments({guid: listUsers.guid}, function(err, c){
+                if (c > 0) {
+                    listUsers.relevancia = 1
+                }
+            })
+            
+            Relevancia2.countDocuments({guid: listUsers.guid}, function(err, c){
+                if (c > 0) {
+                    listUsers.relevancia = 2
+                }
+            })
+
+            console.log(listUsers.relevancia)
     
-            if (relevanciaMax > 0) {
+            /*if (relevanciaMax > 0) {
                 listUsers.relevancia = 1;
             } else if (relevanciaMin > 0){
                 listUsers.relevancia = 2;
             } else {
                 listUsers.relevancia = 3;
-            }
-            //return userlist;            
-        })//.paginate({page: 1, limit: 15}).exec()
+            }  */       
+        }) //.paginate({page: 1, limit: 15}).exec()
 
-        res.json(listUsers)        
+        res.json(listUsers)
+        console.log(listUsers)
+        //res.json(listUsers.sort({relevancia: 1, name: 1 }).paginate({page: 1, limit: 15}))        
     })
 
     //res.json(cursorUsers)
